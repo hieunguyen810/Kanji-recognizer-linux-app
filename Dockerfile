@@ -7,6 +7,7 @@ RUN pip3 install sklearn
 RUN pip3 install pandas
 RUN mkdir /home/kanji
 WORKDIR /home/kanji
+#change url in recognizer
 COPY index.py .
 COPY recognizer.py .
 # load data set

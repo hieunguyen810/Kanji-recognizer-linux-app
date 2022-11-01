@@ -20,11 +20,12 @@ def load_images_from_folder(folder):
 def predict(test_image):
     image_nums = 50
     # read image
-    img = load_images_from_folder("/home/hieunguyen/Documents/Kanji_dataset/Image")
+    url = "/home/hieunguyen/Documents/Kanji_dataset/"
+    img = load_images_from_folder(url + "Image")
     img = np.array(img)
     img = img.reshape(image_nums, 784)
     # read label
-    jisho = pd.read_csv("/home/hieunguyen/Documents/Kanji_dataset/Meaning.csv")
+    jisho = pd.read_csv(url + "Meaning.csv")
     jisho = jisho.values
     label = np.arange(1, 51, 1)
     img = img
@@ -36,9 +37,9 @@ def predict(test_image):
     #Testing
     #test_image = cv2.imread("/home/hieunguyen/Documents/Kanji_dataset/Image/6.png")
     test_image = cv2.resize(test_image, (28, 28))
-    cv2.imshow('Image',test_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow('Image',test_image)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
     test_image = cv2.cvtColor(test_image, cv2.COLOR_BGR2GRAY)
     test_image = test_image.reshape(1, 784)
     y_predict = clf.predict(test_image)
