@@ -31,8 +31,6 @@ def predict(test_image):
     img = img
     clf = tree.DecisionTreeClassifier()
     clf.fit(img, label)
-    print(img.shape)
-    print(label.shape)
     #print(img[0])
     #Testing
     #test_image = cv2.imread("/home/hieunguyen/Documents/Kanji_dataset/Image/6.png")
@@ -43,7 +41,7 @@ def predict(test_image):
     test_image = cv2.cvtColor(test_image, cv2.COLOR_BGR2GRAY)
     test_image = test_image.reshape(1, 784)
     y_predict = clf.predict(test_image)
-    print(y_predict)
+    #print(y_predict)
     # load dictionary
     #print(jisho[y_predict - 1])
     return jisho[y_predict - 1]

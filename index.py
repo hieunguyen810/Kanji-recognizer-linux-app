@@ -36,12 +36,11 @@ class process:
         if self.i == 0:
             self.a = event.x
             self.b = event.y
-            print(self.a, self.b)
             self.i+=1
         elif (self.i == 1):
             self.c = event.x
             self.d = event.y
-            print(self.c, self.d)
+            self.i+=1
             capture(self.a, self.b, self.c, self.d)
 def capture(a, b, c, d):
     left = a
@@ -59,13 +58,14 @@ def capture(a, b, c, d):
     gui.attributes("-alpha", 1)
     pyautogui.screenshot('my_screenshot.png', region=(left, top, width, height))
     img = cv2.imread("my_screenshot.png")
-    #text = recognizer.predict(img)
-    # gui.geometry("400x400")
+    text = recognizer.predict(img)
+    gui.destroy()
+    print(text)
     # cv2.imshow('Image', img)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    #l = Label(gui, text = text)
-    #l.pack()
+    # l = Label(gui, text = text)
+    # l.pack()
 button = Button(gui, text='Take ScreenShot', command=take_screenshot)
 button.pack(padx=10, pady=10)
 gui.mainloop()
