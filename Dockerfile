@@ -10,6 +10,4 @@ WORKDIR /home/kanji
 #change url in recognizer
 COPY index.py .
 COPY recognizer.py .
-# load data set
-COPY .
 CMD ["index.py"]
